@@ -39,6 +39,11 @@ watch() {
             echo ""
         fi
 
+        if ! command -v jq &> /dev/null
+        then
+            echo "Missing dependency: jq"
+            exit
+        fi
 
         auth="Authorization: Bearer $auth"
         client="Client-Id: $client"
@@ -68,6 +73,11 @@ watch() {
 
         done
     else
+        if ! command -v mpv &> /dev/null
+        then
+            echo "Missing dependency: mpv"
+            exit
+        fi
         mpv -start 15 --force-seekable=yes https://twitch.tv/"$1"
     fi
 }

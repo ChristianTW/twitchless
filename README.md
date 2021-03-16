@@ -14,6 +14,11 @@ watch() {
     then 
         ./.config/who.sh 
     else 
+        if [ ! command -v mpv &> /dev/null  ]
+        then
+            echo "Missing dependency: mpv"
+            exit
+        fi
         mpv -start 15 --force-seekable=yes https://twitch.tv/"$1"
     fi 
 }

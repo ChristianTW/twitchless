@@ -36,6 +36,11 @@ then
     echo ""
 fi
 
+if [ ! command -v jq &> /dev/null ]
+then
+    echo "Missing dependency: jq"
+    exit
+fi
 
 auth="Authorization: Bearer $auth"
 client="Client-Id: $client"
