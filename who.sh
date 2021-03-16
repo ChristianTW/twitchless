@@ -5,6 +5,11 @@ watch() {
         export $(egrep -v '^#' .env | xargs)
         auth="Authorization: Bearer $auth"
         client="Client-Id: $client"
+
+        searchURL="https://api.twitch.tv/helix/users?login=$userName"
+        DATA=$(curl -s -X GET "$searchURL" -H "$auth" -H "$client")
+        userID=$( (jq -r '.data[] .id' <<< $DATA) )
+
         searchURL="https://api.twitch.tv/helix/users/follows?from_id=$userID&first=100"
 
         DATA=$(curl -s -X GET "$searchURL" -H "$auth" -H "$client")
