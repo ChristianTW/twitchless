@@ -11,7 +11,7 @@ To run this from an rc file, download who.sh from the rc folder in to your ~/.co
 
 ```
 watch() {
-    if [ "(" = "who" ] 
+    if [ "$1" = "who" ] 
     then 
         ./.config/who.sh 
     else 
@@ -24,6 +24,7 @@ watch() {
     fi 
 }
 ```
+Make sure to source your rc file after adding the code above.
 
 # Usage
 From rc file
