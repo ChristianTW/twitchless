@@ -1,4 +1,4 @@
-## twitchless
+## TwitchView
 # Requirements
 To install the dependencies, simply run the following:
 >brew install jq mpv
